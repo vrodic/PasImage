@@ -11,17 +11,6 @@ object Form1: TForm1
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnResize = FormResize
-  object FileListBox1: TFileListBox
-    Left = 0
-    Height = 331
-    Top = 0
-    Width = 175
-    Directory = '/Users/vedran/img1'
-    ItemHeight = 16
-    Mask = '*.jpeg;*.jpg'
-    TabOrder = 0
-    OnChange = FileListBox1Change
-  end
   object StatusBar1: TStatusBar
     Left = 0
     Height = 18
@@ -29,55 +18,129 @@ object Form1: TForm1
     Width = 1392
     Panels = <>
   end
-  object FileListBox2: TFileListBox
+  object ScrollBox1: TScrollBox
+    AnchorSideLeft.Control = FileSplitter
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = FileListBox1
-    AnchorSideTop.Side = asrBottom
-    AnchorSideBottom.Control = StatusBar1
-    Left = 0
-    Height = 352
-    Top = 331
-    Width = 175
-    Anchors = [akTop, akLeft, akBottom]
-    Directory = '/Users/vedran/img2'
-    ItemHeight = 0
-    Mask = '*.png;*.jpeg;*.jpg'
-    TabOrder = 2
-    OnChange = FileListBox2Change
-  end
-  object Image1: TImage
-    AnchorSideLeft.Control = FileListBox2
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Owner
-    AnchorSideBottom.Control = StatusBar1
-    Left = 175
-    Height = 683
-    Top = 0
-    Width = 586
-    Anchors = [akTop, akLeft, akBottom]
-    DragMode = dmAutomatic
-    PopupMenu = PopupMenu1
-    Proportional = True
-    Stretch = True
-    OnMouseDown = Image1MouseDown
-    OnMouseMove = Image1MouseMove
-    OnMouseUp = Image1MouseUp
-  end
-  object Image2: TImage
-    AnchorSideLeft.Control = Image1
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StatusBar1
-    Left = 761
+    Left = 176
     Height = 683
     Top = 0
-    Width = 631
+    Width = 1216
     Anchors = [akTop, akLeft, akRight, akBottom]
-    DragMode = dmAutomatic
-    PopupMenu = PopupMenu1
-    Proportional = True
-    Stretch = True
+    AutoScroll = False
+    ClientHeight = 681
+    ClientWidth = 1214
+    TabOrder = 1
+    object PairSplitter1: TPairSplitter
+      Left = 0
+      Height = 681
+      Top = 0
+      Width = 1214
+      Align = alClient
+      Position = 700
+      object PairSplitterSide1: TPairSplitterSide
+        Cursor = crArrow
+        Left = 0
+        Height = 681
+        Top = 0
+        Width = 700
+        ClientWidth = 700
+        ClientHeight = 681
+        object Image1: TImage
+          Left = 0
+          Height = 681
+          Top = 0
+          Width = 700
+          Align = alClient
+          Anchors = []
+          DragMode = dmAutomatic
+          PopupMenu = PopupMenu1
+          Proportional = True
+          Stretch = True
+          OnMouseDown = Image1MouseDown
+          OnMouseMove = Image1MouseMove
+          OnMouseUp = Image1MouseUp
+        end
+      end
+      object PairSplitterSide2: TPairSplitterSide
+        Cursor = crArrow
+        Left = 705
+        Height = 681
+        Top = 0
+        Width = 509
+        ClientWidth = 509
+        ClientHeight = 681
+        object Image2: TImage
+          Left = 0
+          Height = 681
+          Top = 0
+          Width = 509
+          Align = alClient
+          Anchors = []
+          DragMode = dmAutomatic
+          PopupMenu = PopupMenu1
+          Proportional = True
+          Stretch = True
+        end
+      end
+    end
+  end
+  object FileSplitter: TPairSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 648
+    Top = 0
+    Width = 176
+    Anchors = [akTop, akLeft, akBottom]
+    Position = 400
+    SplitterType = pstVertical
+    OnChangeBounds = FileSplitterChangeBounds
+    object PairSplitterSide3: TPairSplitterSide
+      Cursor = crArrow
+      Left = 0
+      Height = 400
+      Top = 0
+      Width = 176
+      ClientWidth = 176
+      ClientHeight = 400
+      object FileListBox1: TFileListBox
+        Left = 0
+        Height = 400
+        Top = 0
+        Width = 176
+        Align = alClient
+        Directory = '/Users/vedran/img1'
+        ItemHeight = 16
+        Mask = '*.jpeg;*.jpg'
+        TabOrder = 0
+        OnChange = FileListBox1Change
+      end
+    end
+    object PairSplitterSide4: TPairSplitterSide
+      Cursor = crArrow
+      Left = 0
+      Height = 243
+      Top = 405
+      Width = 176
+      ClientWidth = 176
+      ClientHeight = 243
+      object FileListBox2: TFileListBox
+        Left = 0
+        Height = 243
+        Top = 0
+        Width = 176
+        Align = alClient
+        Anchors = [akTop, akLeft, akBottom]
+        Directory = '/Users/vedran/img2'
+        ItemHeight = 16
+        Mask = '*.png;*.jpeg;*.jpg'
+        TabOrder = 0
+        OnChange = FileListBox2Change
+      end
+    end
   end
   object MainMenu1: TMainMenu
     Left = 8

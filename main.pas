@@ -43,7 +43,14 @@ type
     FlipImageLeftMenuItem: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    PairSplitter1: TPairSplitter;
+    FileSplitter: TPairSplitter;
+    PairSplitterSide1: TPairSplitterSide;
+    PairSplitterSide2: TPairSplitterSide;
+    PairSplitterSide3: TPairSplitterSide;
+    PairSplitterSide4: TPairSplitterSide;
     RightMaxHeightMenuItem: TMenuItem;
+    ScrollBox1: TScrollBox;
     ZoomInMenuItem: TMenuItem;
     ZoomOutMenuItem: TMenuItem;
     OpenDirectoryMenuItem: TMenuItem;
@@ -75,6 +82,7 @@ type
     procedure MenuItem3Click(Sender: TObject);
 
     procedure OpenDirectoryMenuItemClick(Sender: TObject);
+    procedure FileSplitterChangeBounds(Sender: TObject);
     procedure RightMaxHeightMenuItemClick(Sender: TObject);
     procedure SelectRandomFile(FileListBox: TFileListBox);
     procedure RandomFiles;
@@ -272,35 +280,8 @@ begin
 end;
 
 procedure TForm1.FlipImageLeft(Image: TImage);
-var
-  x,y : integer;
-  PT1,PT2 : PRGBByteArray;
-  tc : TTrueColor;
-  imagebitmap,tempbitmap : TBitmap;
 begin
-
-ImageBitmap := TBitmap.Create;
-ImageBitmap.Assign(Image.Picture.Bitmap);
-ImageBitmap.PixelFormat := pf32bit;
-tempbitmap := TBitmap.Create;
-tempbitmap.Width := ImageBitmap.Width;
-tempbitmap.Height := ImageBitmap.Height;
-tempbitmap.PixelFormat := pf32bit;
-for y := 0 to ImageBitmap.height -1 do
-begin
-
-     PT1 := ImageBitmap.ScanLine[y];
-     PT2 := tempBitmap.ScanLine[ImageBitmap.Height-y-1];
-     for x := 0 to ImageBitmap.width -1 do
-     begin
-          tc :=  PT1^[x];
-           PT2^[x] := tc;
-     end;
-end;
-ImageBitmap.Assign(tempbitmap);
-tempbitmap.Free;
-Image.Canvas.Draw(0,0,imagebitmap);
-ImageBitmap.Free;
+ // GD.mirror(Image.Picture.Graphic, GD.IM_HORIZONTAL);
 end;
 
 procedure TForm1.SelectRandomFile(FileListBox: TFileListBox);
@@ -340,6 +321,11 @@ begin
       FileListBox1.Directory:=SelectDirectoryDialog1.FileName;
       StatusBar1.Caption :=  FileListBox1.Directory;
    end;
+
+end;
+
+procedure TForm1.FileSplitterChangeBounds(Sender: TObject);
+begin
 
 end;
 
