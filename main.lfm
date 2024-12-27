@@ -1,0 +1,132 @@
+object Form1: TForm1
+  Left = 441
+  Height = 701
+  Top = 250
+  Width = 1392
+  Align = alCustom
+  Caption = 'Form1'
+  ClientHeight = 701
+  ClientWidth = 1392
+  Menu = MainMenu1
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnResize = FormResize
+  object FileListBox1: TFileListBox
+    Left = 0
+    Height = 331
+    Top = 0
+    Width = 175
+    Directory = '/Users/vedran/img1'
+    ItemHeight = 16
+    Mask = '*.jpeg;*.jpg'
+    TabOrder = 0
+    OnChange = FileListBox1Change
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 683
+    Width = 1392
+    Panels = <>
+  end
+  object FileListBox2: TFileListBox
+    AnchorSideTop.Control = FileListBox1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = StatusBar1
+    Left = 0
+    Height = 352
+    Top = 331
+    Width = 175
+    Anchors = [akTop, akLeft, akBottom]
+    Directory = '/Users/vedran/img2'
+    ItemHeight = 0
+    Mask = '*.png;*.jpeg;*.jpg'
+    TabOrder = 2
+    OnChange = FileListBox2Change
+  end
+  object Image1: TImage
+    AnchorSideLeft.Control = FileListBox2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = StatusBar1
+    Left = 175
+    Height = 683
+    Top = 0
+    Width = 586
+    Anchors = [akTop, akLeft, akBottom]
+    DragMode = dmAutomatic
+    PopupMenu = PopupMenu1
+    Proportional = True
+    Stretch = True
+    OnMouseDown = Image1MouseDown
+    OnMouseMove = Image1MouseMove
+    OnMouseUp = Image1MouseUp
+  end
+  object Image2: TImage
+    AnchorSideLeft.Control = Image1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StatusBar1
+    Left = 761
+    Height = 683
+    Top = 0
+    Width = 631
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    DragMode = dmAutomatic
+    PopupMenu = PopupMenu1
+    Proportional = True
+    Stretch = True
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 8
+    object MenuItem1: TMenuItem
+      Caption = 'File'
+      object OpenDirectoryMenuItem: TMenuItem
+        Caption = 'Open folder'
+        OnClick = OpenDirectoryMenuItemClick
+      end
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Utils'
+      object MenuItem3: TMenuItem
+        Caption = 'Random files'
+        ShortCut = 4178
+        OnClick = MenuItem3Click
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'Left image'
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Right image'
+      object RightMaxHeightMenuItem: TMenuItem
+        Caption = 'Max height'
+        OnClick = RightMaxHeightMenuItemClick
+      end
+    end
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    Left = 8
+    Top = 8
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 8
+    Top = 8
+    object ZoomInMenuItem: TMenuItem
+      Caption = 'Zoom in'
+      ShortCut = 107
+      OnClick = ZoomInMenuItemClick
+    end
+    object ZoomOutMenuItem: TMenuItem
+      Caption = 'Zoom out'
+      ShortCut = 109
+    end
+    object FlipImageLeftMenuItem: TMenuItem
+      Caption = 'Flip image left'
+      OnClick = FlipImageLeftMenuItemClick
+    end
+  end
+end
